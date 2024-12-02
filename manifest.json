@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "LocalGrammarly",
+    "description": "An offline grammar assistant based on Google Chrome Built-in AI or Google Gemini Nano, designed to help you write better anytime, anywhere",
+    "author": {
+        "email": "junaid@abujuni.dev"
+    },
+    "version": "1.0",
+    "permissions": [
+        "contextMenus",
+        "storage",
+        "windows"
+    ],
+    "action": {
+        "default_popup": "./popup/index.html"
+    },
+    "background": {
+        "service_worker": "./scripts/background.js",
+        "type": "module"
+    },
+    "icons": {
+        "16": "./icons/icon-16x16.png",
+        "32": "./icons/icon-32x32.png",
+        "48": "./icons/icon-48x48.png",
+        "128": "./icons/icon-128x128.png"
+    }
+}

@@ -1,0 +1,130 @@
+@font-face {
+  font-family: 'Ubuntu Sans';
+  src: url('../../fonts/UbuntuSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  width: 90%; /* Use a percentage for width */
+  max-width: 400px; /* Set a max width */
+  height: auto; /* Allow height to adjust based on content */
+  border-width: 2px;
+  border: 3px solid green;
+  background: #2c2c2c;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Ubuntu Sans', sans-serif;
+  margin: 0 auto; /* Center the body */
+  padding: 20px; /* Add some padding */
+  display: flex; /* Use flexbox for vertical layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+}
+
+.logo {
+  box-sizing: border-box;
+  width: 100%; /* Make logo responsive */
+  max-width: 200px; /* Set a max width */
+  height: auto; /* Allow height to adjust */
+  margin-bottom: 20px; /* Add space below the logo */
+}
+
+button {
+  box-sizing: border-box;
+  background: #60c663;
+  border: 1px solid #fffdfd;
+  border-radius: 5px;
+  padding: 10px; /* Increase padding for better touch targets */
+  font-family: 'Ubuntu Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem; /* Use rem for font size */
+  line-height: 1.2; /* Use relative line height */
+  color: #1e1e1e;
+  width: 100%; /* Make button full width */
+  max-width: 150px; /* Set a max width */
+  margin: 10px 0; /* Center the button */
+}
+
+.bnt-1 {
+  margin: 20px 0; /* Center the button */
+}
+
+.selected-text {
+  box-sizing: border-box;
+  width: 100%; /* Make selected text area responsive */
+  max-width: 500px; /* Set a max width */
+  height: 200px; /* Increase height for larger textarea */
+  font-family: monospace;
+  background-color: transparent;
+  color: white;
+  border: 2px solid #fffdfd;
+  border-radius: 15px;
+  padding: 15px; /* Increase padding for better text visibility */
+  margin: 20px 0; /* Add margin for spacing */
+  resize: none; /* Prevent resizing if desired */
+  font-size: 1rem;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 100%; /* Make container responsive */
+  max-width: 600px; /* Increased max width for better readability */
+  height: 300px; /* Fixed height for scrolling */
+  border: 1px solid #fffdfd;
+  border-radius: 20px;
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: 1.125rem; /* Increased font size for better readability */
+  padding: 15px; /* Add padding for better spacing inside the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  scrollbar-width: auto; /* Firefox specific */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  margin: 20px 0; /* Add margin for spacing */
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 24px;
+  position: absolute;
+  top: 40%;
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center vertically */
+  color: white; /* Change text color if needed */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Optional: Add a background for better visibility */
+  padding: 20px; /* Optional: Add padding */
+  border-radius: 10px; /* Optional: Rounded corners */
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Custom scrollbar styles for WebKit browsers (Chrome, Safari) */
+.container::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #4caf50; /* A darker green for the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+.selected-text::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.selected-text::-webkit-scrollbar-thumb {
+  background-color: #4caf50; /* Match the scrollbar thumb color */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+
+.selected-text::-webkit-scrollbar-thumb:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}

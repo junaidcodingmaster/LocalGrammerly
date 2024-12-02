@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LocalGrammarly : Local Prompt AI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../lib/showdown.min.js"></script>
+    <script src="script.js" type="module" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <img src="../../svg/logo.svg" class="logo" alt="Logo"></img>
+        <h1 style="color: white;">Local Prompt AI</h1>
+        <b>Local AI Prompt Interface</b>
+        <p style="text-align: left;margin: 0; padding: 0;"><b>Response :</b></p>
+        <div id="response-area">
+            <div id="response-content"></div>
+        </div>
+
+        <div id="prompt-area">
+            <form id="prompt-form">
+                <label>
+                    <p style="text-align: left;"><strong>Prompt :</strong></p>
+                    <textarea id="prompt-input" required></textarea>
+                    <div class=".options">
+                        <lable for="temp">Temperature of output :</lable>
+                        <input type="number" name="temp" id="temp" width="50px" value="0.7" />
+                        <lable for="topk">Controls diversity of the output : </lable>
+                        <input type="number" name="topK" id="topk" width="50px" value="40" />
+                    </div>
+                </label>
+                <button type="submit">SEND</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
