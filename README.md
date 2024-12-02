@@ -6,7 +6,7 @@ LocalGrammerly is a lightweight grammar assistant that works **completely offlin
 
 ---
 
-**DEMO** :
+**DEMO** : https://vimeo.com/1035397079
 
 ---
 
