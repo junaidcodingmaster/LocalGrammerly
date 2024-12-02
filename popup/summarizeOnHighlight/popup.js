@@ -10,14 +10,20 @@ async function init() {
   }
 
   const port = chrome.runtime.connect({ name: "summarizer-port" });
+  if (!port) {
+    console.error("Failed to connect to the summarizer port.");
+    return;
+  }
 
   // Request the highlighted text from the background script
   port.postMessage({ action: "get-highlighted-text" });
 
   port.onMessage.addListener((response) => {
     if (response.action === "send-highlighted-text") {
-      HIGHLIGHTED_TEXT = response.text; // Store the highlighted text
+      HIGHLIGHTED_TEXT = response.text || ""; // Store the highlighted text
       contextTextArea.value = HIGHLIGHTED_TEXT; // Display it in the textarea
+    } else {
+      console.error("Unexpected response action:", response.action);
     }
   });
 
@@ -33,12 +39,16 @@ function showLoadingScreen(message = "Processing...") {
     console.error("Dynamic content wrapper not found.");
     return;
   }
-  wrapper.innerHTML = `<p style="text-align: center; font-size: 24px; position: absolute; top: 40%; left: 20%;"><b>${message}</b></p>`;
+  wrapper.innerHTML = `
+    <p style="text-align: center; font-size: 24px; position: absolute; top: 40%; left: 20%;">
+      <b>${message}</b>
+    </p>`;
 }
 
 // Displays the AI's summarized output (inside a wrapper)
 function displaySummary(summary) {
-  var contentToHTML = converter.makeHtml(summary);
+  // Sanitizing the HTML to prevent XSS
+  const safeSummary = converter.makeHtml(summary);
   const wrapper = document.querySelector(".dynamic-content");
   if (!wrapper) {
     console.error("Dynamic content wrapper not found.");
@@ -46,9 +56,8 @@ function displaySummary(summary) {
   }
   wrapper.innerHTML = `
     <div class="container">
-      ${contentToHTML || "<h1>No summary available.</h1>"}
-    </div>
-  `;
+      ${safeSummary || "<h1>No summary available.</h1>"}
+    </div>`;
 }
 
 // Main function to request a summary from the AI
@@ -60,7 +69,6 @@ function main() {
   }
 
   const userInput = contextTextArea.value.trim();
-
   if (!userInput) {
     alert("Please provide some text for summarization.");
     return;
@@ -69,6 +77,11 @@ function main() {
   showLoadingScreen();
 
   const port = chrome.runtime.connect({ name: "summarizer-port" });
+  if (!port) {
+    console.error("Failed to connect to the summarizer port.");
+    return;
+  }
+
   port.postMessage({ action: "get-summary", text: userInput });
 
   port.onMessage.addListener((response) => {
@@ -76,7 +89,13 @@ function main() {
       displaySummary(response.summary);
     } else {
       console.error("Unexpected response status:", response.status);
+      displaySummary("Failed to retrieve summary. Please try again.");
     }
+  });
+
+  port.onDisconnect.addListener(() => {
+    console.warn("Port disconnected unexpectedly.");
+    displaySummary("Connection lost. Please refresh.");
   });
 }
 
