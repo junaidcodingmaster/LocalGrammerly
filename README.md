@@ -6,6 +6,10 @@ LocalGrammerly is a lightweight grammar assistant that works **completely offlin
 
 ---
 
+**DEMO** :
+
+---
+
 ## 🚀 **Features**
 
 1. **Offline Grammar Correction** (WIP):  
@@ -127,3 +131,7 @@ If you have any questions or suggestions, feel free to reach out!
 
 - **Email**: junaid@abujuni.dev
 - **Portfolio**: [abujuni.dev](https://www.abujuni.dev)
+
+---
+
+### This is my 1st hackathon project.
