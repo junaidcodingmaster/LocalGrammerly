@@ -48,7 +48,7 @@ LocalGrammerly is a lightweight grammar assistant that works **completely offlin
 ### 1. Clone the Repository
 
 ```bash
-git clonehttps://github.com/junaidcodingmaster/LocalGrammarly.git
+git clone https://github.com/junaidcodingmaster/LocalGrammarly.git
 cd LocalGrammarly
 ```
 
